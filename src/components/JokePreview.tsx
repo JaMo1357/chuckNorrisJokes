@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import getJoke from '../HtpService'
-import '../styles/JokePreview.css';
-import { joke } from '../ts/interfaces'
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '../store/'
+import { fetchJoke } from '../store/jokesSlice'
+import { jokeState } from '../ts/interfaces'
+import './../styles/JokePreview.css';
 
 export default function JokePreview() {
-  const [joke, setJoke] = useState({} as any);
+  const dispatch = useAppDispatch()
 
-  const getNewRandomJoke = async () => {
-
-    const jokeData = await getJoke() as joke
-
-    console.log('joke', jokeData);
-
-    setJoke(jokeData)
+  const getRandomJoke = () => {
+    dispatch(fetchJoke())
   }
 
   useEffect(() => {
-    getNewRandomJoke()
-  }, []);
+    getRandomJoke()
+  }, [])
+
+  const joke = useSelector(( state: jokeState )  => state.joke)
 
   return (
     <div className="JokePreview">
@@ -25,7 +24,7 @@ export default function JokePreview() {
         <h3>Random Chuck Norris joke:</h3>
         <p>{ joke.value }</p>
       </div>
-      <a href="#" onClick={getNewRandomJoke} className="NextJoke">Get new random joke</a>
+      <a href="#" onClick={getRandomJoke} className="NextJoke">Get new random joke</a>
     </div>
   );
 }

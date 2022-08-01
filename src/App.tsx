@@ -1,18 +1,19 @@
 import React from 'react';
+import { Provider } from 'react-redux'
+import { store } from './store';
+import JokeHeader from './components/JokeHeader';
+import JokeCategories from './components/JokeCategories';
 import JokePreview from './components/JokePreview';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="AppHeader">
-        <div className="AppHeader-wrapper">
-          Chuck Norris Jokes finder | &nbsp;
-          <input type="text" placeholder="Search joke ..." />
-          <button className="AppHeader-find">Find</button>
-        </div>
-      </header>
-      <JokePreview />
+      <Provider store={store}>
+        <JokeHeader />
+        <JokeCategories />
+        <JokePreview />
+      </Provider>
     </div>
   );
 }

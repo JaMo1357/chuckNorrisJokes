@@ -1,0 +1,18 @@
+.JokeCategoriesWrapper {
+  list-style-type: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 0;
+}
+
+.JokeCategoriesWrapper li {
+  padding: 2px 8px;
+  margin: 5px 10px;
+  border: 2px solid lightblue;
+  cursor: pointer;
+}
+
+.JokeCategoriesWrapper li:hover {
+  background-color: lightblue;
+}

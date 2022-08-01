@@ -7,3 +7,10 @@ export interface joke {
   url?: URL, // "https://api.chucknorris.io/jokes/fbO5cYakRQ2CVzqu6lxQCg"
   value?: string, // "Chuck Norris dosn't eat submarine sandwiches, he eats submarines..."
 }
+
+export interface jokeState {
+  joke: joke
+  categories: Array<string>
+  isLoading: boolean
+  error: string | undefined
+}
